@@ -27,7 +27,7 @@
 
 /* Panel */
 /* #include "am335x-bone-panel-320x240.dtsi" */
-/* #include "am335x-bone-panel-480x272.dtsi" */
+ #include "am335x-bone-panel-480x272.dtsi"
 /* #include "am335x-bone-panel-800x480.dtsi" */
 /* #include "am335x-bone-panel-1024x600-24bit.dtsi" */
-#include "am335x-bone-panel-480x272-bgrx_16bpp.dtsi"
+/* #include "am335x-bone-panel-480x272-bgrx_16bpp.dtsi" */
