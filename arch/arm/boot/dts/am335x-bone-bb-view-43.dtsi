@@ -20,7 +20,7 @@
 #include "am335x-bone-keymap4.dtsi"
 
 /* Backlight */
-#include "am335x-bone-bl-gpio1-18.dtsi"
+#include "am335x-bone-bl-pwm1-18.dtsi"
 
 /* Touchscreen */
 #include "am335x-bone-ti-tscadc-4-wire.dtsi"
