@@ -41,12 +41,11 @@
 	};
 
 	/* lcd4-01-00a0 */
-	gpio1_18_led_pins: pinmux_gpio1_18_led_pins {
-		pinctrl-single,pins = <
-			0x48 0x07	/* gpmc_a2.gpio1_18, OUTPUT | MODE7 */
-		>;
+	pwm_bl_pins: pinmux_pwm_bl_pins {
+				pinctrl-single,pins = <
+					0x48 0x06       /* gpmc_a2.ehrpwm1a, OMAP_MUX_MODE6 | AM33XX_PIN_OUTPUT */
+				>;
 	};
-
 	/* lcd4-01-00a1/lcd7-01-00a2/lcd7-01-00a3 */
 	gpio1_28_led_pins: pinmux_gpio1_28_led_pins {
 		pinctrl-single,pins = <

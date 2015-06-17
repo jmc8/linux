@@ -5,6 +5,16 @@
 	};
 };
 
+/* turn on the pwm parts for the backlight */
+&epwmss1{
+	status = "okay";
+};
+
+&ehrpwm1 {
+	status = "okay";
+};
+
+
 / {
 	backlight {
 	compatible      = "pwm-backlight";
@@ -18,4 +28,3 @@
 	status = "okay";
  };
 	};
-};
