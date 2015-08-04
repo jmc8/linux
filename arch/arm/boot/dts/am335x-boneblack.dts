@@ -86,6 +86,21 @@
 /* P9.20 spi1_cs0 */
 /* #include "am335x-bone-spi1a-spidev.dtsi" */
 
+
+/* eQEP0 */
+/* P9.41 eqep0_index */
+/* P9.25 eqep0_strobe */
+/* P9.42 eqep0A_in */
+/* P9.27 eqep0B_in */
+#include "am335x-bone-eqep0.dts"
+
+/* eQEP2b */
+/* P8.14 eqep2b_index */
+/* P8.15 eqep2b_strobe */
+/* P8.12 eqep2bA_in */
+/* P8.13 eqep2bB_in */
+#include "am335x-bone-eqep2b.dts"
+
 /* uart1: P9.24, P9.26 */
 #include "am335x-ttyO1.dtsi"
 /* #include "am335x-bone-ttyO1.dtsi" */
