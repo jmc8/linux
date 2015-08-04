@@ -55,4 +55,5 @@ obj-$(CONFIG_SRAM)		+= sram.o
 obj-y				+= mic/
 obj-y				+= cape_bone_argus/
 obj-$(CONFIG_GENWQE)		+= genwqe/
+obj-$(CONFIG_TIEQEP)      	+= tieqep.o
 obj-y				+= cape/
