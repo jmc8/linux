@@ -1,0 +1,59 @@
+/*
+ * Copyright (C) 2013 Nathaniel R. Lewis - http://nathanielrlewis.com/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ * 
+ * Enable eQEP0 on the Beaglebone Black - incompatible with BB White because
+ * most of the eQEP0 pins on Beaglebone white are not broken out.
+ */
+
+/* epwmss1, ehrpwm0, eqep1 is taken by the backlight */
+
+
+&epwmss0 {
+	status = "okay";
+};
+
+&ehrpwm0 {
+	status = "okay";
+};
+
+
+&epwmss2 {
+	status = "okay";
+};
+
+&ehrpwm2 {
+	status = "okay";
+};
+
+    
+/* todo: i2c0 is currently taken by the power ic. Once we have
+ * our own hardware w/o it. We should enable the device here.
+ * It's currently labeled as tps in am335x-bone-common.dtsi
+ */
+
+/* The i2c driver is i2c-omap.c in drivers/i2c/busses */
+
+&i2c1 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c1_pins>;
+
+	clock-frequency = <100000>;
+
+};
+
+
+&i2c2 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c2_pins>;
+
+	clock-frequency = <100000>;
+
+};
+
+
