@@ -6,6 +6,19 @@
  * published by the Free Software Foundation.
  */
 
+/*
+This stuff isn't the easiest to read. Here's a primer with references to the TI am335x 
+Technical Reference Manual. Most of these values and info comes from Section 9.3, "Control Module, Registers"
+Ex) 9.3.1.49 conf_<module>_<pin> Register (offset = 800h–A34h)
+All of the offsets in this file assume a starting address of 0x800.
+
+Something like:
+pinctrl-single,pins = <	0x54 0x06 >;
+Means to write offset 0x54 with the value 0x06. The 3 LSbs of the value set the mux mode.
+So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, which is conf_gpmc_a5 in the Manual
+			
+
+*/
 &am33xx_pinmux {
 	user_leds_default: user_leds_default {
 		pinctrl-single,pins = <
@@ -281,7 +294,6 @@
 			0x0FC (PIN_INPUT_PULLUP | MUX_MODE0)	/* mmc0_dat0.mmc0_dat0 */
 			0x100 (PIN_INPUT_PULLUP | MUX_MODE0)	/* mmc0_clk.mmc0_clk */
 			0x104 (PIN_INPUT_PULLUP | MUX_MODE0)	/* mmc0_cmd.mmc0_cmd */
-			0x1A0 (PIN_INPUT_PULLUP | MUX_MODE7)	/* mcasp0_aclkr.gpio3_18 */
 			0x160 (PIN_INPUT | MUX_MODE7)		/* spi0_cs1.gpio0_6 */
 		>;
 	};
@@ -294,7 +306,6 @@
 			0x0FC (PIN_INPUT_PULLDOWN | MUX_MODE7)
 			0x100 (PIN_INPUT_PULLDOWN | MUX_MODE7)
 			0x104 (PIN_INPUT_PULLDOWN | MUX_MODE7)
-			0x1A0 (PIN_INPUT_PULLDOWN | MUX_MODE7)
 		>;
 	};
 
@@ -457,7 +468,7 @@
 
 	/* eQEP0 */
 	eqep0_pins: pinmux_eqep0_pins {
-        		pinctrl-single,pins = <
+        	pinctrl-single,pins = <
                         0x1A8 0x21  /* P9_41 = GPIO3_20 = EQEP0_index, MODE1 */        
                         0x1AC 0x21  /* P9_25 = GPIO3_21 = EQEP0_strobe, MODE1 */   
                         0x1A0 0x31  /* P9_42 = GPIO3_18 = EQEP0A_in, MODE1 */       
@@ -473,7 +484,7 @@
                         0x0D4 0x32  /* P8_33 = GPIO0_9 = EQEP1B_in, MODE2 */
                         0x0D0 0x32  /* P8_35 = GPIO0_8 = EQEP1A_in, MODE2 */
                 >;
-            };
+        };
 
 	/* eQEP2 */
  	eqep2_pins: pinmux_eqep2_pins {
@@ -483,7 +494,7 @@
                         0x0B0 0x33  /* P8_41 = GPIO2_10 = EQEP2A_in, MODE3 */
                         0x0B4 0x33  /* P8_42 = GPIO2_11 = EQEP2B_in, MODE3 */
                 >;
-            };
+        };
 
 	/* eQEP2b */
 	eqep2b_pins: pinmux_eqep2b_pins {
@@ -594,7 +605,7 @@
 	P8_11_pruout_pin: pinmux_P8_11_pruout_pin {
 		pinctrl-single,pins = <0x034  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_11_qep_pin: pinmux_P8_11_qep_pin {
-		pinctrl-single,pins = <0x034  0x24>; };     /* Mode 4, Pull-Down, RxActive */
+		pinctrl-single,pins = <0x034  0x34>; };     /* Mode 4, Pull-Down, RxActive */
 
 	/* P8_12 (ZCZ ball T12) */
 	P8_12_default_pin: pinmux_P8_12_default_pin {
@@ -608,7 +619,7 @@
 	P8_12_pruout_pin: pinmux_P8_12_pruout_pin {
 		pinctrl-single,pins = <0x030  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_12_qep_pin: pinmux_P8_12_qep_pin {
-		pinctrl-single,pins = <0x030  0x24>; };     /* Mode 4, Pull-Down, RxActive */
+		pinctrl-single,pins = <0x030  0x34>; };     /* Mode 4, Pull-Down, RxActive */
 
 	/* P8_13 (ZCZ ball T10) */
 	P8_13_default_pin: pinmux_P8_13_default_pin {
@@ -1284,7 +1295,7 @@
 	P9_27_gpio_pd_pin: pinmux_P9_27_gpio_pd_pin {
 		pinctrl-single,pins = <0x1a4  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_27_qep_pin: pinmux_P9_27_qep_pin {
-		pinctrl-single,pins = <0x1a4  0x21>; };     /* Mode 1, Pull-Down, RxActive FIXME */
+		pinctrl-single,pins = <0x1a4  0x31>; };     /* Mode 1, Pull-Up, RxActive FIXME */
 	P9_27_pruout_pin: pinmux_P9_27_pruout_pin {
 		pinctrl-single,pins = <0x1a4  0x25>; };     /* Mode 5, Pull-Down, RxActive */
 	P9_27_pruin_pin: pinmux_P9_27_pruin_pin {
@@ -1440,7 +1451,7 @@
 	P9_92_gpio_pd_pin: pinmux_P9_92_gpio_pd_pin {
 		pinctrl-single,pins = <0x1a0  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_92_qep_pin: pinmux_P9_92_qep_pin {
-		pinctrl-single,pins = <0x1a0  0x21>; };     /* Mode 1, Pull-Down, RxActive FIXME*/
+		pinctrl-single,pins = <0x1a0  0x31>; };     /* Mode 1, Pull-Up, RxActive FIXME*/
 	P9_92_pruout_pin: pinmux_P9_92_pruout_pin {
 		pinctrl-single,pins = <0x1a0  0x25>; };     /* Mode 5, Pull-Down, RxActive */
 	P9_92_pruin_pin: pinmux_P9_92_pruin_pin {

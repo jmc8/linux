@@ -17,14 +17,14 @@
     
 &eqep2 {
 
-	compatible = "ti,beaglebone", "ti,beaglebone-black";
+	compatible = "ti,beaglebone", "ti,beaglebone-black", "ti,am33xx-eqep";
 
     	/* identification */
     	part-number = "bone_eqep2b";
     	version     = "00A0";
 
 	pinctrl-names = "default";
-        pinctrl-0 = <&eqep2b_pins>;
+        pinctrl-0 = <>;
             
         count_mode = <0>;  /* 0 - Quadrature mode, normal 90 phase offset cha & chb.  1 - Direction mode.  cha input = clock, chb input = direction */
         swap_inputs = <0>; /* Are channel A and channel B swapped? (0 - no, 1 - yes) */

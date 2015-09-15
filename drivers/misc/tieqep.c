@@ -259,7 +259,7 @@ static ssize_t eqep_get_position(struct device *dev, struct device_attribute *at
     struct eqep_chip *eqep = dev_get_drvdata(dev);
     
     // A variable to return the position with
-    s32 position = 0;
+    u32 position = 0;
     
     // Check the mode
     if(eqep->mode == TIEQEP_MODE_ABSOLUTE)
