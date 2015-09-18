@@ -68,7 +68,7 @@
 #define QCPRDLAT   0x0040
 #define QREVID     0x005C
 
-// Bits for the QDECTL register
+// Bits for the QDECCTL register
 #define QSRC1      (0x0001 << 15)
 #define QSRC0      (0x0001 << 14)
 #define SOEN       (0x0001 << 13)
@@ -416,11 +416,167 @@ static ssize_t eqep_set_mode(struct device *dev, struct device_attribute *attr, 
     return count;
 }
 
+
+static ssize_t eqep_get_a_active(struct device *dev, struct device_attribute *attr, const char *buf)
+{
+   /*
+    *	The input pins are all active low by default (0 value in the QDECCTL register)
+    */
+
+    // Get the instance structure
+    struct eqep_chip *eqep = dev_get_drvdata(dev);
+    
+    // Read the qep QDECCTL register and mask all but the QAP bit
+    u16 enabled = readw(eqep->mmio_base + QDECCTL) & QAP;
+    
+    // Return the target in string format
+    return sprintf(buf, "%u\n", (enabled) ? 1 : 0);
+    
+}
+
+// Function to set the active state of the eQEP A input hardware
+static ssize_t eqep_set_a_active(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+{
+    
+    int rc;
+    u16 val;
+    u8  tmp_mode;
+    struct eqep_chip *eqep = dev_get_drvdata(dev); // Get the instance structure
+
+    // Convert the input string to an 8 bit uint
+    if ((rc = kstrtou8(buf, 0, &tmp_mode)))
+        return rc;
+        
+    // Get the existing state of QDECCTL
+    val = readw(eqep->mmio_base + QDECCTL);
+    
+    // Check the mode that was passed
+    if(tmp_mode == 1)
+    {
+        val = val | QAP;
+        
+    } else if(tmp_mode == 0)
+    {
+        val = val & ~QAP;
+    }
+    
+    // Write the new value back to the QDECCTL register    
+    writew(val, eqep->mmio_base + QDECCTL);
+    
+    // Return buffer length consumed (all)
+    return count;    
+}
+
+// Function to set the mode of the eQEP hardware
+static ssize_t eqep_get_b_active(struct device *dev, struct device_attribute *attr, const char *buf)
+{
+   /*
+    *	The input pins are all active low by default (0 value in the QDECCTL register)
+    */
+
+    // Get the instance structure
+    struct eqep_chip *eqep = dev_get_drvdata(dev);
+    
+    // Read the qep QDECCTL register and mask all but the QBP bit
+    u16 enabled = readw(eqep->mmio_base + QDECCTL) & QBP;
+    
+    // Return the target in string format
+    return sprintf(buf, "%u\n", (enabled) ? 1 : 0);
+    
+}
+
+// Function to set the mode of the eQEP hardware
+static ssize_t eqep_set_b_active(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+{
+    int rc;
+    u16 val;
+    u8  tmp_mode;
+    struct eqep_chip *eqep = dev_get_drvdata(dev); // Get the instance structure
+
+    // Convert the input string to an 8 bit uint
+    if ((rc = kstrtou8(buf, 0, &tmp_mode)))
+        return rc;
+        
+    // Get the existing state of QDECCTL
+    val = readw(eqep->mmio_base + QDECCTL);
+    
+    // Check the mode that was passed
+    if(tmp_mode == 1)
+    {
+        val = val | QBP;
+        
+    } else if(tmp_mode == 0)
+    {
+        val = val & ~QBP;
+    }
+    
+    // Write the new value back to the QDECCTL register    
+    writew(val, eqep->mmio_base + QDECCTL);
+    
+    // Return buffer length consumed (all)
+    return count;        
+}
+
+// Function to set the mode of the eQEP hardware
+static ssize_t eqep_get_index_active(struct device *dev, struct device_attribute *attr, const char *buf)
+{
+   /*
+    *	The input pins are all active low by default (0 value in the QDECCTL register)
+    */
+
+    // Get the instance structure
+    struct eqep_chip *eqep = dev_get_drvdata(dev);
+    
+    // Read the qep QDECCTL register and mask all but the QIP bit
+    u16 enabled = readw(eqep->mmio_base + QDECCTL) & QIP;
+    
+    // Return the target in string format
+    return sprintf(buf, "%u\n", (enabled) ? 1 : 0);
+    
+}
+
+// Function to set the mode of the eQEP hardware
+static ssize_t eqep_set_index_active(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
+{
+    int rc;
+    u16 val;
+    u8  tmp_mode;
+    struct eqep_chip *eqep = dev_get_drvdata(dev); // Get the instance structure
+
+    // Convert the input string to an 8 bit uint
+    if ((rc = kstrtou8(buf, 0, &tmp_mode)))
+        return rc;
+        
+    // Get the existing state of QDECCTL
+    val = readw(eqep->mmio_base + QDECCTL);
+    
+    // Check the mode that was passed
+    if(tmp_mode == 1)
+    {
+        val = val | QIP;
+        
+    } else if(tmp_mode == 0)
+    {
+        val = val & ~QIP;
+    }
+    
+    // Write the new value back to the QDECCTL register    
+    writew(val, eqep->mmio_base + QDECCTL);
+    
+    // Return buffer length consumed (all)
+    return count;        
+}
+
+
 // Bind read/write functions to sysfs entries
 static DEVICE_ATTR(enabled,  0644, eqep_get_enabled,      eqep_set_enabled);
 static DEVICE_ATTR(position, 0644, eqep_get_position,     eqep_set_position);
 static DEVICE_ATTR(period,   0644, eqep_get_timer_period, eqep_set_timer_period);
 static DEVICE_ATTR(mode,     0644, eqep_get_mode,         eqep_set_mode);
+static DEVICE_ATTR(a_input_active_high,     0644, eqep_get_a_active,	eqep_set_a_active);
+static DEVICE_ATTR(b_input_active_high,     0644, eqep_get_b_active,    eqep_set_b_active);
+static DEVICE_ATTR(index_input_active_high, 0644, eqep_get_index_active,eqep_set_index_active);
+
 
 // Array holding all of the sysfs entries
 static const struct attribute *eqep_attrs[] = {
@@ -428,6 +584,9 @@ static const struct attribute *eqep_attrs[] = {
     &dev_attr_position.attr,
     &dev_attr_period.attr,
     &dev_attr_mode.attr,
+    &dev_attr_a_input_active_high.attr,
+    &dev_attr_b_input_active_high.attr,
+    &dev_attr_index_input_active_high.attr,
     NULL,
 };
 
