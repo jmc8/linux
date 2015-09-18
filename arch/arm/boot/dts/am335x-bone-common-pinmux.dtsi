@@ -626,7 +626,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 		pinctrl-single,pins = <0x030  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_12_qep_pin: pinmux_P8_12_qep_pin {
 		pinctrl-single,pins = <0x030  0x3C>; };     /* Mode 4, RxActive */
-	P8_12_qep_pin: pinmux_P8_12_qep_pu_pin {
+	P8_12_qep_pu_pin: pinmux_P8_12_qep_pu_pin {
 		pinctrl-single,pins = <0x030  0x34>; };     /* Mode 4, Pull-Up, RxActive */
 	P8_12_qep_pd_pin: pinmux_P8_12_qep_pd_pin {
 		pinctrl-single,pins = <0x030  0x24>; };     /* Mode 4, Pull-Down, RxActive */
@@ -1559,7 +1559,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P8_11_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruout", "qep", "qep_pu, "qep_pd";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruout", "qep", "qep_pu", "qep_pd";
 		pinctrl-0 = <&P8_11_default_pin>;
 		pinctrl-1 = <&P8_11_gpio_pin>;
 		pinctrl-2 = <&P8_11_gpio_pu_pin>;
@@ -1573,7 +1573,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P8_12_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruout", "qep", "qep_pu, "qep_pd";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruout", "qep", "qep_pu", "qep_pd";
 		pinctrl-0 = <&P8_12_default_pin>;
 		pinctrl-1 = <&P8_12_gpio_pin>;
 		pinctrl-2 = <&P8_12_gpio_pu_pin>;
@@ -1609,7 +1609,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P8_15_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruin", "qep", "qep_pu, "qep_pd";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruin", "qep", "qep_pu", "qep_pd";
 		pinctrl-0 = <&P8_15_default_pin>;
 		pinctrl-1 = <&P8_15_gpio_pin>;
 		pinctrl-2 = <&P8_15_gpio_pu_pin>;
@@ -1623,7 +1623,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P8_16_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruin", "qep", "qep_pu, "qep_pd";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "pruin", "qep", "qep_pu", "qep_pd";
 		pinctrl-0 = <&P8_16_default_pin>;
 		pinctrl-1 = <&P8_16_gpio_pin>;
 		pinctrl-2 = <&P8_16_gpio_pu_pin>;
@@ -2106,7 +2106,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P9_25_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu, "qep_pd", "pruout", "pruin", "audio";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd", "pruout", "pruin", "audio";
 		pinctrl-0 = <&P9_25_default_pin>;
 		pinctrl-1 = <&P9_25_gpio_pin>;
 		pinctrl-2 = <&P9_25_gpio_pu_pin>;
@@ -2136,7 +2136,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P9_27_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu, "qep_pd", "pruout", "pruin";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd", "pruout", "pruin";
 		pinctrl-0 = <&P9_27_default_pin>;
 		pinctrl-1 = <&P9_27_gpio_pin>;
 		pinctrl-2 = <&P9_27_gpio_pu_pin>;
@@ -2223,7 +2223,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P9_91_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu, "qep_pd", "pruout", "pruin";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd", "pruout", "pruin";
 		pinctrl-0 = <&P9_91_default_pin>;
 		pinctrl-1 = <&P9_91_gpio_pin>;
 		pinctrl-2 = <&P9_91_gpio_pu_pin>;
@@ -2252,7 +2252,7 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P9_92_pinmux {
 		compatible = "bone-pinmux-helper";
 		status = "okay";
-		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu, "qep_pd", "pruout", "pruin";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd", "pruout", "pruin";
 		pinctrl-0 = <&P9_92_default_pin>;
 		pinctrl-1 = <&P9_92_gpio_pin>;
 		pinctrl-2 = <&P9_92_gpio_pu_pin>;
