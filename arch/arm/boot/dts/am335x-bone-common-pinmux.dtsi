@@ -605,11 +605,11 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 	P8_11_pruout_pin: pinmux_P8_11_pruout_pin {
 		pinctrl-single,pins = <0x034  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_11_qep_pin: pinmux_P8_11_qep_pin {
-		pinctrl-single,pins = <0x034  0x34>; };     /* Mode 4, RxActive */
-P8_11_qep_pu_pin: pinmux_P8_11_qep_pu_pin {
+		pinctrl-single,pins = <0x034  0x3C>; };     /* Mode 4, RxActive */
+	P8_11_qep_pu_pin: pinmux_P8_11_qep_pu_pin {
 		pinctrl-single,pins = <0x034  0x34>; };     /* Mode 4, Pull-Up, RxActive */
-P8_11_qep_pd_pin: pinmux_P8_11_qep_pd_pin {
-		pinctrl-single,pins = <0x034  0x34>; };     /* Mode 4, Pull-Down, RxActive */
+	P8_11_qep_pd_pin: pinmux_P8_11_qep_pd_pin {
+		pinctrl-single,pins = <0x034  0x24>; };     /* Mode 4, Pull-Down, RxActive */
 
 
 
@@ -625,11 +625,11 @@ P8_11_qep_pd_pin: pinmux_P8_11_qep_pd_pin {
 	P8_12_pruout_pin: pinmux_P8_12_pruout_pin {
 		pinctrl-single,pins = <0x030  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_12_qep_pin: pinmux_P8_12_qep_pin {
-		pinctrl-single,pins = <0x030  0x34>; };     /* Mode 4, RxActive */
-P8_12_qep_pin: pinmux_P8_12_qep_pu_pin {
+		pinctrl-single,pins = <0x030  0x3C>; };     /* Mode 4, RxActive */
+	P8_12_qep_pin: pinmux_P8_12_qep_pu_pin {
 		pinctrl-single,pins = <0x030  0x34>; };     /* Mode 4, Pull-Up, RxActive */
-P8_12_qep_pd_pin: pinmux_P8_12_qep_pd_pin {
-		pinctrl-single,pins = <0x030  0x34>; };     /* Mode 4, Pull-Down, RxActive */
+	P8_12_qep_pd_pin: pinmux_P8_12_qep_pd_pin {
+		pinctrl-single,pins = <0x030  0x24>; };     /* Mode 4, Pull-Down, RxActive */
 
 
 
@@ -669,10 +669,10 @@ P8_12_qep_pd_pin: pinmux_P8_12_qep_pd_pin {
 	P8_15_pruin_pin: pinmux_P8_15_pruin_pin {
 		pinctrl-single,pins = <0x03c  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_15_qep_pin: pinmux_P8_15_qep_pin {
-		pinctrl-single,pins = <0x03c  0x24>; };     /* Mode 4, RxActive */
-P8_15_qep_pu_pin: pinmux_P8_15_qep_pu_pin {
-		pinctrl-single,pins = <0x03c  0x24>; };     /* Mode 4, Pull-Up, RxActive */
-P8_15_qep_pd_pin: pinmux_P8_15_qep_pd_pin {
+		pinctrl-single,pins = <0x03c  0x2C>; };     /* Mode 4, RxActive */
+	P8_15_qep_pu_pin: pinmux_P8_15_qep_pu_pin {
+		pinctrl-single,pins = <0x03c  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	P8_15_qep_pd_pin: pinmux_P8_15_qep_pd_pin {
 		pinctrl-single,pins = <0x03c  0x24>; };     /* Mode 4, Pull-Down, RxActive */
 
 	/* P8_16 (ZCZ ball V13) */
@@ -687,10 +687,10 @@ P8_15_qep_pd_pin: pinmux_P8_15_qep_pd_pin {
 	P8_16_pruin_pin: pinmux_P8_16_pruin_pin {
 		pinctrl-single,pins = <0x038  0x26>; };     /* Mode 6, Pull-Down, RxActive */
 	P8_16_qep_pin: pinmux_P8_16_qep_pin {
-		pinctrl-single,pins = <0x038  0x24>; };     /* Mode 4, RxActive */
-P8_16_qep_pu_pin: pinmux_P8_16_qep_pu_pin {
-		pinctrl-single,pins = <0x038  0x24>; };     /* Mode 4, Pull-Up, RxActive */
-P8_16_qep_pd_pin: pinmux_P8_16_qep_pd_pin {
+		pinctrl-single,pins = <0x038  0x2C>; };     /* Mode 4, RxActive */
+	P8_16_qep_pu_pin: pinmux_P8_16_qep_pu_pin {
+		pinctrl-single,pins = <0x038  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	P8_16_qep_pd_pin: pinmux_P8_16_qep_pd_pin {
 		pinctrl-single,pins = <0x038  0x24>; };     /* Mode 4, Pull-Down, RxActive */
 
 	/* P8_17 (ZCZ ball U12) */
@@ -1279,10 +1279,10 @@ P8_16_qep_pd_pin: pinmux_P8_16_qep_pd_pin {
 	P9_25_gpio_pd_pin: pinmux_P9_25_gpio_pd_pin {
 		pinctrl-single,pins = <0x1ac  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_25_qep_pin: pinmux_P9_25_qep_pin {
-		pinctrl-single,pins = <0x1ac  0x21>; };     /* Mode 1, RxActive */
-P9_25_qep_pu_pin: pinmux_P9_25_qep_pu_pin {
-		pinctrl-single,pins = <0x1ac  0x21>; };     /* Mode 1, Pull-Up, RxActive */
-P9_25_qep_pd_pin: pinmux_P9_25_qep_pd_pin {
+		pinctrl-single,pins = <0x1ac  0x29>; };     /* Mode 1, RxActive */
+	P9_25_qep_pu_pin: pinmux_P9_25_qep_pu_pin {
+		pinctrl-single,pins = <0x1ac  0x31>; };     /* Mode 1, Pull-Up, RxActive */
+	P9_25_qep_pd_pin: pinmux_P9_25_qep_pd_pin {
 		pinctrl-single,pins = <0x1ac  0x21>; };     /* Mode 1, Pull-Down, RxActive */
 	P9_25_pruout_pin: pinmux_P9_25_pruout_pin {
 		pinctrl-single,pins = <0x1ac  0x25>; };     /* Mode 5, Pull-Down, RxActive */
@@ -1319,11 +1319,11 @@ P9_25_qep_pd_pin: pinmux_P9_25_qep_pd_pin {
 	P9_27_gpio_pd_pin: pinmux_P9_27_gpio_pd_pin {
 		pinctrl-single,pins = <0x1a4  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_27_qep_pin: pinmux_P9_27_qep_pin {
-		pinctrl-single,pins = <0x1a4  0x31>; };     /* Mode 1, RxActive  */
-P9_27_qep_pu_pin: pinmux_P9_27_qep_pu_pin {
+		pinctrl-single,pins = <0x1a4  0x39>; };     /* Mode 1, RxActive  */
+	P9_27_qep_pu_pin: pinmux_P9_27_qep_pu_pin {
 		pinctrl-single,pins = <0x1a4  0x31>; };     /* Mode 1, Pull-Up, RxActive */
-P9_27_qep_pd_pin: pinmux_P9_27_qep_pd_pin {
-		pinctrl-single,pins = <0x1a4  0x31>; };     /* Mode 1, Pull-Down, RxActive */
+	P9_27_qep_pd_pin: pinmux_P9_27_qep_pd_pin {
+		pinctrl-single,pins = <0x1a4  0x21>; };     /* Mode 1, Pull-Down, RxActive */
 	P9_27_pruout_pin: pinmux_P9_27_pruout_pin {
 		pinctrl-single,pins = <0x1a4  0x25>; };     /* Mode 5, Pull-Down, RxActive */
 	P9_27_pruin_pin: pinmux_P9_27_pruin_pin {
@@ -1444,10 +1444,10 @@ P9_27_qep_pd_pin: pinmux_P9_27_qep_pd_pin {
 	P9_91_gpio_pd_pin: pinmux_P9_91_gpio_pd_pin {
 		pinctrl-single,pins = <0x1a8  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_91_qep_pin: pinmux_P9_91_qep_pin {
-		pinctrl-single,pins = <0x1a8  0x21>; };     /* Mode 1, RxActive */
-P9_91_qep_pu_pin: pinmux_P9_91_qep_pu_pin {
-		pinctrl-single,pins = <0x1a8  0x21>; };     /* Mode 1, Pull-Up, RxActive */
-P9_91_qep_pd_pin: pinmux_P9_91_qep_pd_pin {
+		pinctrl-single,pins = <0x1a8  0x29>; };     /* Mode 1, RxActive */
+	P9_91_qep_pu_pin: pinmux_P9_91_qep_pu_pin {
+		pinctrl-single,pins = <0x1a8  0x31>; };     /* Mode 1, Pull-Up, RxActive */
+	P9_91_qep_pd_pin: pinmux_P9_91_qep_pd_pin {
 		pinctrl-single,pins = <0x1a8  0x21>; };     /* Mode 1, Pull-Down, RxActive */
 	P9_91_pruout_pin: pinmux_P9_91_pruout_pin {
 		pinctrl-single,pins = <0x1a8  0x25>; };     /* Mode 5, Pull-Down, RxActive */
@@ -1483,11 +1483,11 @@ P9_91_qep_pd_pin: pinmux_P9_91_qep_pd_pin {
 	P9_92_gpio_pd_pin: pinmux_P9_92_gpio_pd_pin {
 		pinctrl-single,pins = <0x1a0  0x27>; };     /* Mode 7, Pull-Down, RxActive */
 	P9_92_qep_pin: pinmux_P9_92_qep_pin {
-		pinctrl-single,pins = <0x1a0  0x31>; };     /* Mode 1, RxActive */
-P9_92_qep_pu_pin: pinmux_P9_92_qep_pu_pin {
+		pinctrl-single,pins = <0x1a0  0x39>; };     /* Mode 1, RxActive */
+	P9_92_qep_pu_pin: pinmux_P9_92_qep_pu_pin {
 		pinctrl-single,pins = <0x1a0  0x31>; };     /* Mode 1, Pull-Up, RxActive */
-P9_92_qep_pd_pin: pinmux_P9_92_qep_pd_pin {
-		pinctrl-single,pins = <0x1a0  0x31>; };     /* Mode 1, Pull-Down, RxActive */
+	P9_92_qep_pd_pin: pinmux_P9_92_qep_pd_pin {
+		pinctrl-single,pins = <0x1a0  0x21>; };     /* Mode 1, Pull-Down, RxActive */
 	P9_92_pruout_pin: pinmux_P9_92_pruout_pin {
 		pinctrl-single,pins = <0x1a0  0x25>; };     /* Mode 5, Pull-Down, RxActive */
 	P9_92_pruin_pin: pinmux_P9_92_pruin_pin {
@@ -1566,8 +1566,8 @@ P9_92_qep_pd_pin: pinmux_P9_92_qep_pd_pin {
 		pinctrl-3 = <&P8_11_gpio_pd_pin>;
 		pinctrl-4 = <&P8_11_pruout_pin>;
 		pinctrl-5 = <&P8_11_qep_pin>;
-pinctrl-5 = <&P8_11_qep_pu_pin>;
-pinctrl-5 = <&P8_11_qep_pd_pin>;
+		pinctrl-6 = <&P8_11_qep_pu_pin>;
+		pinctrl-7 = <&P8_11_qep_pd_pin>;
 	};
 
 	P8_12_pinmux {
@@ -1580,8 +1580,8 @@ pinctrl-5 = <&P8_11_qep_pd_pin>;
 		pinctrl-3 = <&P8_12_gpio_pd_pin>;
 		pinctrl-4 = <&P8_12_pruout_pin>;
 		pinctrl-5 = <&P8_12_qep_pin>;
-pinctrl-5 = <&P8_12_qep_pu_pin>;
-pinctrl-5 = <&P8_12_qep_pd_pin>;
+		pinctrl-6 = <&P8_12_qep_pu_pin>;
+		pinctrl-7 = <&P8_12_qep_pd_pin>;
 	};
 
 	P8_13_pinmux {
@@ -1616,8 +1616,8 @@ pinctrl-5 = <&P8_12_qep_pd_pin>;
 		pinctrl-3 = <&P8_15_gpio_pd_pin>;
 		pinctrl-4 = <&P8_15_pruin_pin>;
 		pinctrl-5 = <&P8_15_qep_pin>;
-pinctrl-5 = <&P8_15_qep_pu_pin>;
-pinctrl-5 = <&P8_15_qep_pd_pin>;
+		pinctrl-6 = <&P8_15_qep_pu_pin>;
+		pinctrl-7 = <&P8_15_qep_pd_pin>;
 	};
 
 	P8_16_pinmux {
@@ -1630,8 +1630,8 @@ pinctrl-5 = <&P8_15_qep_pd_pin>;
 		pinctrl-3 = <&P8_16_gpio_pd_pin>;
 		pinctrl-4 = <&P8_16_pruin_pin>;
 		pinctrl-5 = <&P8_16_qep_pin>;
-pinctrl-5 = <&P8_16_qep_pu_pin>;
-pinctrl-5 = <&P8_16_qep_pd_pin>;
+		pinctrl-6 = <&P8_16_qep_pu_pin>;
+		pinctrl-7 = <&P8_16_qep_pd_pin>;
 	};
 
 	P8_17_pinmux {
@@ -2112,11 +2112,11 @@ pinctrl-5 = <&P8_16_qep_pd_pin>;
 		pinctrl-2 = <&P9_25_gpio_pu_pin>;
 		pinctrl-3 = <&P9_25_gpio_pd_pin>;
 		pinctrl-4 = <&P9_25_qep_pin>;
-pinctrl-4 = <&P9_25_qep_pu_pin>;
-pinctrl-4 = <&P9_25_qep_pd_pin>;
-		pinctrl-5 = <&P9_25_pruout_pin>;
-		pinctrl-6 = <&P9_25_pruin_pin>;
-		pinctrl-7 = <&P9_25_audio_pin>;
+		pinctrl-5 = <&P9_25_qep_pu_pin>;
+		pinctrl-6 = <&P9_25_qep_pd_pin>;
+		pinctrl-7 = <&P9_25_pruout_pin>;
+		pinctrl-8 = <&P9_25_pruin_pin>;
+		pinctrl-9 = <&P9_25_audio_pin>;
 	};
 
 	P9_26_pinmux {
@@ -2142,10 +2142,10 @@ pinctrl-4 = <&P9_25_qep_pd_pin>;
 		pinctrl-2 = <&P9_27_gpio_pu_pin>;
 		pinctrl-3 = <&P9_27_gpio_pd_pin>;
 		pinctrl-4 = <&P9_27_qep_pin>;
-pinctrl-4 = <&P9_27_qep_pu_pin>;
-pinctrl-4 = <&P9_27_qep_pd_pin>;
-		pinctrl-5 = <&P9_27_pruout_pin>;
-		pinctrl-6 = <&P9_27_pruin_pin>;
+		pinctrl-5 = <&P9_27_qep_pu_pin>;
+		pinctrl-6 = <&P9_27_qep_pd_pin>;
+		pinctrl-7 = <&P9_27_pruout_pin>;
+		pinctrl-8 = <&P9_27_pruin_pin>;
 	};
 
 	P9_28_pinmux {
@@ -2229,10 +2229,10 @@ pinctrl-4 = <&P9_27_qep_pd_pin>;
 		pinctrl-2 = <&P9_91_gpio_pu_pin>;
 		pinctrl-3 = <&P9_91_gpio_pd_pin>;
 		pinctrl-4 = <&P9_91_qep_pin>;
-pinctrl-4 = <&P9_91_qep_pu_pin>;
-pinctrl-4 = <&P9_91_qep_pd_pin>;
-		pinctrl-5 = <&P9_91_pruout_pin>;
-		pinctrl-6 = <&P9_91_pruin_pin>;
+		pinctrl-5 = <&P9_91_qep_pu_pin>;
+		pinctrl-6 = <&P9_91_qep_pd_pin>;
+		pinctrl-7 = <&P9_91_pruout_pin>;
+		pinctrl-8 = <&P9_91_pruin_pin>;
 	};
 
 	P9_42_pinmux {
@@ -2258,10 +2258,10 @@ pinctrl-4 = <&P9_91_qep_pd_pin>;
 		pinctrl-2 = <&P9_92_gpio_pu_pin>;
 		pinctrl-3 = <&P9_92_gpio_pd_pin>;
 		pinctrl-4 = <&P9_92_qep_pin>;
-pinctrl-4 = <&P9_92_qep_pu_pin>;
-pinctrl-4 = <&P9_92_qep_pd_pin>;
-		pinctrl-5 = <&P9_92_pruout_pin>;
-		pinctrl-6 = <&P9_92_pruin_pin>;
+		pinctrl-5 = <&P9_92_qep_pu_pin>;
+		pinctrl-6 = <&P9_92_qep_pd_pin>;
+		pinctrl-7 = <&P9_92_pruout_pin>;
+		pinctrl-8 = <&P9_92_pruin_pin>;
 	};
 
 	cape-universal {
