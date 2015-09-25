@@ -23,6 +23,9 @@
  *   - mode => 0 - absolute; 1 - relative
  *   - period => sampling period for the hardware
  *   - enable => 0 - eQEP disabled, 1 - eQEP enabled
+ *   - a_input_active_high => 0 - A Input active low, 1 - A Input active high
+ *   - b_input_active_high => 0 - B Input active low, 1 - B Input active high
+ *   - index_input_active_high => 0 - index Input active low, 1 - index Input active high
  */
 
 #include <linux/module.h>
@@ -67,6 +70,15 @@
 #define QCTMRLAT   0x003E
 #define QCPRDLAT   0x0040
 #define QREVID     0x005C
+
+// Bits for the QEPSTS register
+#define UPEVNT     (0x0001 << 7)
+#define FDF        (0x0001 << 6)
+#define QDF        (0x0001 << 5)
+#define QDLF       (0x0001 << 4)
+#define COEF       (0x0001 << 3)
+#define CDEF       (0x0001 << 2)
+#define FIMF       (0x0001 << 1)
 
 // Bits for the QDECCTL register
 #define QSRC1      (0x0001 << 15)
@@ -129,7 +141,18 @@
 
 // Bits for the interrupt registers
 #define EQEP_INTERRUPT_MASK (0x0FFF)
-#define UTOF                (0x0001 << 11)
+#define UTOF                (0x0001 << 11) //Unit time out interrupt flag
+#define IELF				(0x0001 << 10) //Index event latch interrupt flag
+#define SELF				(0x0001 << 9) //Strobe event latch interrupt flag
+#define PCMF				(0x0001 << 8) //eQEP compare match event interrupt flag
+#define PCRF				(0x0001 << 7) //Position-compare ready interrupt flag
+#define PCOF				(0x0001 << 6) //Position counter overflow interrupt flag
+#define PCUF				(0x0001 << 5) //Position counter underflow interrupt flag
+#define WTOF				(0x0001 << 4) //Watchdog timeout interrupt flag
+#define QDCF				(0x0001 << 3) //Quadrature direction change interrupt flag
+#define PHEF				(0x0001 << 2) //Quadrature phase error interrupt flag
+#define PCEF				(0x0001 << 1) //Position counter error interrupt flag
+#define INTF				(0x0001 << 0) //Global interrupt status flag
 
 // Bits to control the clock in the PWMSS subsystem
 #define PWMSS_EQEPCLK_EN        BIT(4)
@@ -163,6 +186,9 @@ struct eqep_chip
     // Mode of the eQEP unit
     u8                      mode;
     
+    // Remember previous QPOSCNT
+    u32						oldCNT;
+    
     // work stuct for the notify userspace work
     struct work_struct      notify_work;
     
@@ -188,14 +214,28 @@ static irqreturn_t eqep_irq_handler(int irq, void *dev_id)
     struct platform_device *pdev = dev_id;
     struct eqep_chip       *eqep = platform_get_drvdata(pdev);
 
+    u32 newCNT;
+    
     // Get the interrupt flags
     u16 iflags = readw(eqep->mmio_base + QFLG) & EQEP_INTERRUPT_MASK;
-
+   
     // Check the interrupt source(s)
     if(iflags & UTOF)
     {
-        // Handle the unit timer overflow interrupt by notifying any potential pollers
-        schedule_work(&eqep->notify_work);
+    	//Don't call userspace unless the QPOSCNT has changed    	
+    	newCNT = readl(eqep->mmio_base + QPOSCNT);    	
+    	if(eqep->oldCNT == newCNT){     	    
+
+    	} else {
+    		eqep->oldCNT = newCNT;
+    		schedule_work(&eqep->notify_work);
+    	}
+    }
+    if(iflags & IELF){
+       	// Handle the Index event interrupt by notifying any potential pollers
+       	//schedule_work(&eqep->notify_work);
+    	
+    	//readw(eqep->mmio_base + QEPCTL) | SWI;
     }
     
     // Clear interrupt flags (write back triggered flags to the clear register)
@@ -394,8 +434,10 @@ static ssize_t eqep_set_mode(struct device *dev, struct device_attribute *attr, 
     {
         // In absolute mode, we don't want to reset the intenal hardware based on time,
         // so disable the unit timer position reset (Set PCRM[1:0] = 0)
-        val = val & ~PCRM1 & ~PCRM0;
+        val = val & ~PCRM1 & ~PCRM0; //position counter reset on Index Event
         
+        val = val | IEI1 | IEI0; //QPOSCNT = QPOSINIT on Index event
+                
         // Store the mode as absolute
         eqep->mode = TIEQEP_MODE_ABSOLUTE;
     } else if(tmp_mode == TIEQEP_MODE_RELATIVE)
@@ -736,16 +778,17 @@ static int eqep_probe(struct platform_device *pdev)
     // maximum position, when read into a signed int, it will equal -1.  Two's complement for 
     // the WIN!!
     writel(-1, eqep->mmio_base + QPOSMAX);
-    
+	
+	
     // Enable some interrupts
     status = readw(eqep->mmio_base + QEINT);
-    status = status | UTOF;
-            // UTOF - Unit Time Period interrupt.  This is triggered when the unit timer period expires
-            // 
+    status = status | UTOF | IELF;
+            // UTOF - Unit time out interrupt flag
+            // IELF - Index Event Latch flag
     writew(status, eqep->mmio_base + QEINT);
     
     // Calculate the timer ticks per second
-    period = 1000000000;
+    period = 200000000; //200ms
     period = period * eqep->clk_rate;
     do_div(period, NSEC_PER_SEC);
     
