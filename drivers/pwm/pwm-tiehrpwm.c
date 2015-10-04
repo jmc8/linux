@@ -264,13 +264,14 @@ static int ehrpwm_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
 	 * Period values should be same for multiple PWM channels as IP uses
 	 * same period register for multiple channels.
 	 */
+	/*
 	for (i = 0; i < NUM_PWM_CHANNEL; i++) {
 		if (pc->period_cycles[i] &&
 				(pc->period_cycles[i] != period_cycles)) {
-			/*
-			 * Allow channel to reconfigure period if no other
-			 * channels being configured.
-			 */
+
+			 // Allow channel to reconfigure period if no other
+			 // channels being configured.
+
 			if (i == pwm->hwpwm)
 				continue;
 
@@ -279,6 +280,7 @@ static int ehrpwm_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
 			return -EINVAL;
 		}
 	}
+    */
 
 	pc->period_cycles[pwm->hwpwm] = period_cycles;
 
