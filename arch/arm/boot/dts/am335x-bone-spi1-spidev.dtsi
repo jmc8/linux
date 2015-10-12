@@ -15,13 +15,13 @@
 	spidev2: spi@0 {
 		compatible = "spidev";
 		reg = <0>;
-		spi-max-frequency = <16000000>;
+		spi-max-frequency = <48000000>;
 		spi-cpha;
 	};
 
 	spidev3: spi@1 {
 		compatible = "spidev";
 		reg = <1>;
-		spi-max-frequency = <16000000>;
+		spi-max-frequency = <48000000>;
 	};
 };
