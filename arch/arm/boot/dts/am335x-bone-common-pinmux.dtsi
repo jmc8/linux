@@ -531,6 +531,81 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 
 
 
+	
+	/************************/
+	/* JMC8 unknown Header  */
+	/************************/
+
+	/* V15 (ZCZ ball V15) */
+	V15_default_pin: pinmux_V15_default_pin {
+		pinctrl-single,pins = <0x054  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	V15_gpio_pin: pinmux_V15_gpio_pin {
+		pinctrl-single,pins = <0x054  0x2F>; };     /* Mode 7, RxActive */
+	V15_gpio_pu_pin: pinmux_V15_gpio_pu_pin {
+		pinctrl-single,pins = <0x054  0x37>; };     /* Mode 7, Pull-Up, RxActive */
+	V15_gpio_pd_pin: pinmux_V15_gpio_pd_pin {
+		pinctrl-single,pins = <0x054  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	V15_qep_pin: pinmux_V15_qep_pin {
+		pinctrl-single,pins = <0x054  0x3C>; };     /* Mode 4, RxActive */
+	V15_qep_pu_pin: pinmux_V15_qep_pu_pin {
+		pinctrl-single,pins = <0x054  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	V15_qep_pd_pin: pinmux_V15_qep_pd_pin {
+		pinctrl-single,pins = <0x054  0x24>; };     /* Mode 4, Pull-Down, RxActive */
+		
+		
+		
+	/* U15 (ZCZ ball U15) */
+	U15_default_pin: pinmux_U15_default_pin {
+		pinctrl-single,pins = <0x058  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	U15_gpio_pin: pinmux_U15_gpio_pin {
+		pinctrl-single,pins = <0x058  0x2F>; };     /* Mode 7, RxActive */
+	U15_gpio_pu_pin: pinmux_U15_gpio_pu_pin {
+		pinctrl-single,pins = <0x058  0x37>; };     /* Mode 7, Pull-Up, RxActive */
+	U15_gpio_pd_pin: pinmux_U15_gpio_pd_pin {
+		pinctrl-single,pins = <0x058  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	U15_qep_pin: pinmux_U15_qep_pin {
+		pinctrl-single,pins = <0x058  0x3C>; };     /* Mode 4, RxActive */
+	U15_qep_pu_pin: pinmux_U15_qep_pu_pin {
+		pinctrl-single,pins = <0x058  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	U15_qep_pd_pin: pinmux_U15_qep_pd_pin {
+		pinctrl-single,pins = <0x058  0x24>; };     /* Mode 4, Pull-Down, RxActive */
+		
+		
+	/* T15 (ZCZ ball T15) */
+	T15_default_pin: pinmux_T15_default_pin {
+		pinctrl-single,pins = <0x05c  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	T15_gpio_pin: pinmux_T15_gpio_pin {
+		pinctrl-single,pins = <0x05c  0x2F>; };     /* Mode 7, RxActive */
+	T15_gpio_pu_pin: pinmux_T15_gpio_pu_pin {
+		pinctrl-single,pins = <0x05c  0x37>; };     /* Mode 7, Pull-Up, RxActive */
+	T15_gpio_pd_pin: pinmux_T15_gpio_pd_pin {
+		pinctrl-single,pins = <0x05c  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	T15_qep_pin: pinmux_T15_qep_pin {
+		pinctrl-single,pins = <0x05c  0x3C>; };     /* Mode 4, RxActive */
+	T15_qep_pu_pin: pinmux_T15_qep_pu_pin {
+		pinctrl-single,pins = <0x05c  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	T15_qep_pd_pin: pinmux_T15_qep_pd_pin {
+		pinctrl-single,pins = <0x05c  0x24>; };     /* Mode 4, Pull-Down, RxActive */
+		
+		
+		
+	/* V16 (ZCZ ball V16) */
+	V16_default_pin: pinmux_V16_default_pin {
+		pinctrl-single,pins = <0x060  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	V16_gpio_pin: pinmux_V16_gpio_pin {
+		pinctrl-single,pins = <0x060  0x2F>; };     /* Mode 7, RxActive */
+	V16_gpio_pu_pin: pinmux_V16_gpio_pu_pin {
+		pinctrl-single,pins = <0x060  0x37>; };     /* Mode 7, Pull-Up, RxActive */
+	V16_gpio_pd_pin: pinmux_V16_gpio_pd_pin {
+		pinctrl-single,pins = <0x060  0x27>; };     /* Mode 7, Pull-Down, RxActive */
+	V16_qep_pin: pinmux_V16_qep_pin {
+		pinctrl-single,pins = <0x060  0x3C>; };     /* Mode 4, RxActive */
+	V16_qep_pu_pin: pinmux_V16_qep_pu_pin {
+		pinctrl-single,pins = <0x060  0x34>; };     /* Mode 4, Pull-Up, RxActive */
+	V16_qep_pd_pin: pinmux_V16_qep_pd_pin {
+		pinctrl-single,pins = <0x060  0x24>; };     /* Mode 4, Pull-Down, RxActive */						
+
+
 
 
 	
@@ -1507,6 +1582,63 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 /**********************************************************************/
 
 &ocp {
+
+	/************************/
+	/* JMC8 unknown Header  */
+	/************************/
+	V15_pinmux {
+		compatible = "bone-pinmux-helper";
+		status = "okay";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd";
+		pinctrl-0 = <&V15_default_pin>;
+		pinctrl-1 = <&V15_gpio_pin>;
+		pinctrl-2 = <&V15_gpio_pu_pin>;
+		pinctrl-3 = <&V15_gpio_pd_pin>;
+		pinctrl-4 = <&V15_qep_pin>;
+		pinctrl-5 = <&V15_qep_pu_pin>;
+		pinctrl-6 = <&V15_qep_pd_pin>;
+	};
+	
+	U15_pinmux {
+		compatible = "bone-pinmux-helper";
+		status = "okay";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd";
+		pinctrl-0 = <&U15_default_pin>;
+		pinctrl-1 = <&U15_gpio_pin>;
+		pinctrl-2 = <&U15_gpio_pu_pin>;
+		pinctrl-3 = <&U15_gpio_pd_pin>;
+		pinctrl-4 = <&U15_qep_pin>;
+		pinctrl-5 = <&U15_qep_pu_pin>;
+		pinctrl-6 = <&U15_qep_pd_pin>;
+	};	
+	
+	T15_pinmux {
+		compatible = "bone-pinmux-helper";
+		status = "okay";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd";
+		pinctrl-0 = <&T15_default_pin>;
+		pinctrl-1 = <&T15_gpio_pin>;
+		pinctrl-2 = <&T15_gpio_pu_pin>;
+		pinctrl-3 = <&T15_gpio_pd_pin>;
+		pinctrl-4 = <&T15_qep_pin>;
+		pinctrl-5 = <&T15_qep_pu_pin>;
+		pinctrl-6 = <&T15_qep_pd_pin>;
+	};
+	
+	V16_pinmux {
+		compatible = "bone-pinmux-helper";
+		status = "okay";
+		pinctrl-names = "default", "gpio", "gpio_pu", "gpio_pd", "qep", "qep_pu", "qep_pd";
+		pinctrl-0 = <&V16_default_pin>;
+		pinctrl-1 = <&V16_gpio_pin>;
+		pinctrl-2 = <&V16_gpio_pu_pin>;
+		pinctrl-3 = <&V16_gpio_pd_pin>;
+		pinctrl-4 = <&V16_qep_pin>;
+		pinctrl-5 = <&V16_qep_pu_pin>;
+		pinctrl-6 = <&V16_qep_pd_pin>;
+	};
+	
+			
 	/************************/
 	/* P8 Header            */
 	/************************/
@@ -2270,6 +2402,30 @@ So the 0x06 sets the pin to mode 6 by writting the value to addr 0x800 + 0x54, w
 		pinctrl-names = "default";
 		pinctrl-0 = <>;
 
+		V15 {
+			gpio-name = "V15";
+			gpio = <&gpio1 21 0>;
+			input;
+			dir-changeable;
+		};
+		U15 {
+			gpio-name = "U15";
+			gpio = <&gpio1 22 0>;
+			input;
+			dir-changeable;
+		};
+		T15 {
+			gpio-name = "T15";
+			gpio = <&gpio1 23 0>;
+			input;
+			dir-changeable;
+		};
+		V16 {
+			gpio-name = "V16";
+			gpio = <&gpio1 24 0>;
+			input;
+			dir-changeable;
+		};
 		P8_07 {
 			gpio-name = "P8_07";
 			gpio = <&gpio2 2 0>;

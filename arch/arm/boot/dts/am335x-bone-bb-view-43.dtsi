@@ -8,7 +8,7 @@
 
 /* Led */
 /* #include "am335x-bone-led-gpio1-18.dtsi" */
-#include "am335x-bone-led-gpio1-28.dtsi"
+/* #include "am335x-bone-led-gpio1-28.dtsi" */
 /* #include "am335x-bone-led-gpio3-19.dtsi" */
 /* #include "am335x-bone-led-gpio2-4-gpio2-5.dtsi" */
 

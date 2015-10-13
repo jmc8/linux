@@ -18,6 +18,7 @@
 		reg = <0x80000000 0x10000000>; /* 256 MB */
 	};
 
+/*
 	leds {
 		pinctrl-names = "default", "sleep";
 		pinctrl-0 = <&user_leds_default>;
@@ -53,6 +54,7 @@
 			default-state = "off";
 		};
 	};
+*/
 
 	vbat: fixedregulator@0 {
 		compatible = "regulator-fixed";
